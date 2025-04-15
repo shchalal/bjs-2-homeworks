@@ -15,5 +15,20 @@ function solveEquation(a, b, c) {
 		return [root1, root2];
 	}
 }
-}
 
+function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+    let monthlyRate = (percent / 100) / 12;
+  
+    let principal = amount - contribution;
+  
+    let monthlyPayment;
+    if (monthlyRate === 0) {
+        monthlyPayment = principal / countMonths;
+    } else {
+        monthlyPayment = principal * (monthlyRate + (monthlyRate / (((1 + monthlyRate) ** countMonths) - 1)));
+    }
+  
+    let totalPayment =  monthlyPayment * countMonths;
+  
+    return Number(totalPayment.toFixed(2));
+}
